@@ -6,6 +6,8 @@ import ServicesSection from './components/ServicesSection';
 import ProjectsSection from './components/ProjectsSection';
 import ContactSection from './components/ContactSection';
 import ContactModal from './components/ContactModal';
+import ClickSparkEffect from './components/ClickSparkEffect';
+import CustomCursor from './components/CustomCursor';
 
 export const App: React.FC = () => {
   const [isContactOpen, setIsContactOpen] = useState(false);
@@ -15,6 +17,12 @@ export const App: React.FC = () => {
       className="bg-[#0C0C0C] text-[#D7E2EA] font-['Kanit'] min-h-screen w-full relative"
       style={{ overflowX: 'clip' }}
     >
+      {/* Dynamic Cyber Click Sparks & Shockwave Animation */}
+      <ClickSparkEffect />
+
+      {/* Futuristic Interactive Cursor with Tap Squash & Hover Feedback */}
+      <CustomCursor />
+
       {/* 1. Hero Section */}
       <HeroSection onContactClick={() => setIsContactOpen(true)} />
 
@@ -43,3 +51,4 @@ export const App: React.FC = () => {
 };
 
 export default App;
+

@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { FadeIn } from './FadeIn';
 import { Magnet } from './Magnet';
 import { ContactButton } from './ContactButton';
@@ -24,9 +25,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onContactClick }) => {
           {["About", "Services", "Projects", "Contact"].map((item) => {
             const targetId = item.toLowerCase();
             return (
-              <button
+              <motion.button
                 key={item}
                 type="button"
+                whileHover={{ scale: 1.08, y: -2 }}
+                whileTap={{ scale: 0.92 }}
+                transition={{ type: 'spring', stiffness: 450, damping: 20 }}
                 onClick={() => {
                   if (item === "Contact" && onContactClick) {
                     onContactClick();
@@ -37,11 +41,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onContactClick }) => {
                 className="text-[#D7E2EA] font-medium uppercase tracking-wider text-sm md:text-lg lg:text-[1.4rem] transition-opacity duration-200 hover:opacity-70 cursor-pointer"
               >
                 {item}
-              </button>
+              </motion.button>
             );
           })}
         </nav>
       </FadeIn>
+
 
       {/* 2. Hero Heading */}
       <div className="w-full overflow-hidden text-center z-0 flex-shrink-0">

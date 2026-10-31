@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { X, Mail, Phone, MapPin, Send, Check, Copy } from 'lucide-react';
 
 interface ContactModalProps {
@@ -33,12 +34,16 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-in fade-in duration-200">
       <div className="bg-[#121318] border-2 border-[#D7E2EA] rounded-[36px] max-w-xl w-full p-6 sm:p-8 max-h-[90vh] overflow-y-auto text-[#D7E2EA] shadow-[0_25px_60px_rgba(0,0,0,0.9)] relative">
-        <button
+        <motion.button
           onClick={onClose}
+          whileHover={{ scale: 1.1, rotate: 90 }}
+          whileTap={{ scale: 0.9 }}
+          transition={{ type: 'spring', stiffness: 400, damping: 20 }}
           className="absolute top-6 right-6 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors cursor-pointer text-[#D7E2EA]"
         >
           <X className="w-5 h-5" />
-        </button>
+        </motion.button>
+
 
         <span className="text-xs uppercase tracking-widest text-purple-400 font-mono">
           Get in Touch
@@ -57,13 +62,14 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
               <Mail className="w-4 h-4 text-purple-400 flex-shrink-0" />
               <span className="text-xs font-mono truncate">mk8212581@gmail.com</span>
             </div>
-            <button
+            <motion.button
               onClick={handleCopyEmail}
-              className="p-1 rounded-lg hover:bg-white/10 transition-colors text-[#D7E2EA]/70 hover:text-white"
+              whileTap={{ scale: 0.88 }}
+              className="p-1 rounded-lg hover:bg-white/10 transition-colors text-[#D7E2EA]/70 hover:text-white cursor-pointer"
               title="Copy Email"
             >
               {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
-            </button>
+            </motion.button>
           </div>
 
           <a
@@ -119,13 +125,16 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
               />
             </div>
 
-            <button
+            <motion.button
               type="submit"
-              className="w-full py-3.5 rounded-full bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600 text-white font-medium uppercase tracking-widest text-xs transition-opacity hover:opacity-90 flex items-center justify-center gap-2 cursor-pointer"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: 'spring', stiffness: 400, damping: 20 }}
+              className="w-full py-3.5 rounded-full bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600 text-white font-medium uppercase tracking-widest text-xs transition-opacity hover:opacity-90 flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-purple-600/30"
             >
               <Send className="w-4 h-4" />
               <span>Send Message</span>
-            </button>
+            </motion.button>
           </form>
         )}
 

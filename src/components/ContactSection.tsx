@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { FadeIn } from './FadeIn';
 import { ContactButton } from './ContactButton';
 import { Mail, Phone, MapPin, Award, GraduationCap, Briefcase, Check, Copy, ArrowUpRight } from 'lucide-react';
@@ -119,9 +120,10 @@ export const ContactSection: React.FC = () => {
                 </h3>
 
                 <div className="space-y-3 text-xs sm:text-sm">
-                  <button
+                  <motion.button
                     onClick={copyEmail}
-                    className="w-full flex items-center justify-between p-2.5 rounded-xl bg-white/5 hover:bg-white/10 transition-colors text-left group"
+                    whileTap={{ scale: 0.96 }}
+                    className="w-full flex items-center justify-between p-2.5 rounded-xl bg-white/5 hover:bg-white/10 transition-colors text-left group cursor-pointer"
                   >
                     <span className="font-mono text-xs text-[#D7E2EA]">mk8212581@gmail.com</span>
                     {copied ? (
@@ -129,7 +131,7 @@ export const ContactSection: React.FC = () => {
                     ) : (
                       <Copy className="w-4 h-4 text-[#D7E2EA]/50 group-hover:text-white" />
                     )}
-                  </button>
+                  </motion.button>
 
                   <a
                     href="tel:8509309241"
